@@ -20,5 +20,10 @@
   "homepage": "https://github.com/RinaOcean/node_hw-1",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "commander": "^8.0.0",
+    "nanoid": "^3.1.23",
+    "yargs": "^17.0.1"
   }
 }
