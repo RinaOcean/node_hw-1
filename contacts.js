@@ -61,6 +61,17 @@ async function removeContact(contactId) {
 async function addContact(name, email, phone) {
   try {
     const contacts = await getAllContacts().then((contacts) => contacts);
+
+    const isInContacts = (contact) =>
+      contact.name === name ||
+      contact.email === email ||
+      contact.phone === phone;
+
+    if (contacts.some(isInContacts)) {
+      console.warn(`Contact is already in contacts`);
+      return;
+    }
+
     const newContact = { id: nanoid(), name, email, phone };
     const contactsListUpdate = JSON.stringify([newContact, ...contacts]);
     fs.writeFile(contactsPath, contactsListUpdate);
