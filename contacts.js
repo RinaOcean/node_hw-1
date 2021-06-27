@@ -51,7 +51,8 @@ async function removeContact(contactId) {
     fs.writeFile(contactsPath, contactsList);
 
     console.log(`Contact with id ${contactId} was removed`);
-    getAllContacts().then((contacts) => console.table(contacts));
+
+    console.table(await getAllContacts().then((contacts) => contacts));
   } catch (error) {
     console.error(error);
   }
@@ -64,7 +65,7 @@ async function addContact(name, email, phone) {
     const contactsListUpdate = JSON.stringify([newContact, ...contacts]);
     fs.writeFile(contactsPath, contactsListUpdate);
     console.log(`Contact was successfully added`);
-    getAllContacts().then((contacts) => console.table(contacts));
+    console.table(await getAllContacts().then((contacts) => contacts));
   } catch (error) {
     console.error(error);
   }
